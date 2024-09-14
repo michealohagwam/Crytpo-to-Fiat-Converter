@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Crypto Wallet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            padding-left: 20px;  /* Ensure padding on the left */
+            padding-right: 20px; /* Ensure padding on the right */
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        input, select, textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding is included in width */
+        }
+        
+        .btn-save {
+            padding: 10px;
+            width: 100%;
+            background-color: yellow;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .btn-save:hover {
+            background-color: #f1c40f;
+        }
+        
+        .btn-delete {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .btn-delete:hover {
+            background-color: darkred;
+        }
+        
+        .section-description {
+            font-size: 14px;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Settings</h2>
+
+        <!-- Profile Settings -->
+        <div class="section">
+            <div class="section-title">Profile Settings</div>
+            <input type="text" value="FixedUsername123" readonly>
+            <input type="file" accept="image/*">
+            <input type="email" value="user@example.com" readonly>
+            <input type="tel" placeholder="Add Phone Number" required>
+            <input type="password" placeholder="Change Password" required>
+            <button class="btn-save">Save Changes</button>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="section">
+            <div class="section-title">Security Settings</div>
+            <p><button class="btn-save">View Devices & Logout</button></p>
+            <p><button class="btn-save">Logout from All Devices</button></p>
+            <p class="section-description">2FA is currently unavailable.</p>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="section">
+            <div class="section-title">Notification Settings</div>
+            <p>Email and SMS notifications are mandatory for security purposes.</p>
+        </div>
+
+        <!-- Language & Currency Settings -->
+        <div class="section">
+            <div class="section-title">Language & Currency</div>
+            <select>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+            </select>
+            <select>
+                <option value="usd">USD - Dollar</option>
+                <option value="eur">EUR - Euro</option>
+                <option value="gbp">GBP - Pound</option>
+                <option value="ngn">NGN - Nigerian Naira</option>
+                <!-- Add more African currencies here -->
+            </select>
+            <button class="btn-save">Save Changes</button>
+        </div>
+
+        <!-- Transaction Limits -->
+        <div class="section">
+            <div class="section-title">Transaction Limits</div>
+            <input type="number" placeholder="Set Daily Withdrawal Limit" min="0">
+            <input type="number" placeholder="Set Daily Transfer Limit" min="0">
+            <button class="btn-save">Save Limits</button>
+        </div>
+
+        <!-- Support & Help -->
+        <div class="section">
+            <div class="section-title">Support & Help</div>
+            <p><button class="btn-save">Contact Support</button></p>
+            <p><button class="btn-save">Report an Issue</button></p>
+            <p><button class="btn-save">Submit Feedback</button></p>
+        </div>
+
+        <!-- Legal -->
+        <div class="section">
+            <div class="section-title">Legal</div>
+            <a href="#">Terms of Service</a><br>
+            <a href="#">Privacy Policy</a><br>
+            <a href="#">KYC Verification</a>
+        </div>
+
+        <!-- Delete Account -->
+        <div class="section">
+            <div class="section-title">Delete Account</div>
+            <button class="btn-delete">Deactivate/Close Account</button>
+            <p class="section-description">Download transaction history and wallet backup before deletion.</p>
+        </div>
+    </div>
+
+</body>
+</html>

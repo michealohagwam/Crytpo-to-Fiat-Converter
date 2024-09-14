@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw - Crypto Wallet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .header .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .header .settings-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .settings-profile a {
+            color: black;
+            font-size: 20px;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .header .settings-profile a:hover {
+            color: grey;
+        }
+
+        .header .settings-profile img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .nav-bar a {
+            font-size: 12px;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .nav-bar a.active {
+            color: yellow;
+            border-bottom: 2px solid yellow;
+        }
+
+        .withdraw-section {
+            margin-top: 20px;
+        }
+
+        .withdraw-form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .withdraw-form input,
+        .withdraw-form select {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%; /* Ensure inputs take full width */
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+
+        .btn-withdraw {
+            padding: 10px;
+            width: 100%;
+            background-color: yellow;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-withdraw:hover {
+            background-color: #f1c40f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <span class="title">Withdraw</span>
+            <div class="settings-profile">
+                <a href="settings.html" title="Settings"><i class="fas fa-cog"></i></a>
+                <a href="profile.html" title="Profile">
+                    <img src="https://via.placeholder.com/30" alt="Profile">
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <a href="index.html">Overview</a>
+            <a href="convert.html">Convert</a>
+            <a href="deposit.html">Deposit</a>
+            <a href="withdraw.html" class="active">Withdraw</a>
+            <a href="transfer.html">Transfer</a>
+            <a href="history.html">History</a>
+        </div>
+
+        <!-- Withdraw Section -->
+        <div class="withdraw-section">
+            <form class="withdraw-form" id="withdrawForm">
+                <!-- Amount -->
+                <input type="number" id="amount" placeholder="Min amount: 0.001" required min="0.001">
+
+                <!-- Withdrawal Method -->
+                <select id="withdrawalMethod" required>
+                    <option value="" disabled selected>Select Withdrawal Method</option>
+                    <option value="bank">Bank Transfer</option>
+                    <option value="usdt">USDT (ERC20)</option>
+                    <option value="btc">BTC</option>
+                </select>
+
+                <!-- Dynamic Fields -->
+                <div id="additionalFields"></div>
+
+                <!-- Withdraw Button -->
+                <button type="submit" class="btn-withdraw">Withdraw</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const withdrawalMethod = document.getElementById('withdrawalMethod');
+        const additionalFields = document.getElementById('additionalFields');
+
+        withdrawalMethod.addEventListener('change', function() {
+            additionalFields.innerHTML = ''; // Clear existing fields
+
+            if (this.value === 'bank') {
+                additionalFields.innerHTML = `
+                    <input type="text" id="bankName" placeholder="Enter Bank Name" required>
+                    <input type="text" id="accountNumber" placeholder="Enter Account Number/IBAN" required>
+                    <input type="text" id="swiftCode" placeholder="Enter Swift Code" required>
+                    <input type="text" id="description" placeholder="Note">
+                `;
+            } else if (this.value === 'usdt') {
+                additionalFields.innerHTML = `
+                    <input type="text" id="walletAddress" placeholder="Enter crypto wallet address" required>
+                `;
+            } else if (this.value === 'btc') {
+                additionalFields.innerHTML = `
+                    <input type="text" id="walletAddress" placeholder="Enter crypto wallet address" required>
+                `;
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('withdrawForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Withdrawal initiated!');
+        });
+    </script>
+
+</body>
+</html>
